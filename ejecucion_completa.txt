@@ -1,0 +1,1024 @@
+?????????????????????????????????????????????????????????????????
+?          COMPILADOR - LENGUAJE EN ESPA?OL v1.0                ?
+?          Universidad Polit?cnica de Chiapas                   ?
+?          Compiladores e Int?rpretes - Proyecto Final           ?
+?????????????????????????????????????????????????????????????????
+
+???????????????????????????????????????????????????????????????
+? C?DIGO FUENTE: programa.txt
+???????????????????????????????????????????????????????????????
+    1 ? // Programa de ejemplo - Lenguaje con palabras en espa?ol
+    2 ? // Declaraci?n de variables de diferentes tipos
+    3 ? entero edad = 20;
+    4 ? decimal precio = 45.50;
+    5 ? cadena nombre = "Estudiante";
+    6 ? entero resultado = 0;
+    7 ? cadena mensaje = "";
+    8 ? 
+    9 ? // Asignaci?n de valores y expresiones aritm?ticas
+   10 ? entero suma = 10 + 5;
+   11 ? entero resta = 20 - 8;
+   12 ? decimal multiplicacion = 3.5 * 2;
+   13 ? decimal division = 100 / 4;
+   14 ? 
+   15 ? // Imprimir resultados de expresiones
+   16 ? imprimir("=== Operaciones Aritm?ticas ===");
+   17 ? imprimir(suma);
+   18 ? imprimir(resta);
+   19 ? imprimir(multiplicacion);
+   20 ? imprimir(division);
+   21 ? 
+   22 ? // Lectura desde teclado
+   23 ? imprimir("Ingrese su edad:");
+   24 ? leer(edad);
+   25 ? imprimir("Ingrese su nombre:");
+   26 ? leer(nombre);
+   27 ? 
+   28 ? // Sentencia si-sino (if-else)
+   29 ? si (edad >= 18) {
+   30 ?     imprimir("Es mayor de edad");
+   31 ?     resultado = edad * 2;
+   32 ?     imprimir(resultado);
+   33 ? } sino {
+   34 ?     imprimir("Es menor de edad");
+   35 ?     resultado = edad + 5;
+   36 ?     imprimir(resultado);
+   37 ? }
+   38 ? 
+   39 ? // Sentencia mientras (while)
+   40 ? entero contador = 1;
+   41 ? imprimir("=== Ciclo Mientras ===");
+   42 ? mientras (contador <= 3) {
+   43 ?     imprimir(contador);
+   44 ?     contador = contador + 1;
+   45 ? }
+   46 ? 
+   47 ? // Sentencia hacer-mientras (do-while)
+   48 ? entero num = 5;
+   49 ? imprimir("=== Ciclo Hacer-Mientras ===");
+   50 ? hacer {
+   51 ?     imprimir(num);
+   52 ?     num = num - 1;
+   53 ? } mientras (num > 3);
+   54 ? 
+   55 ? // Sentencia para (for)
+   56 ? imprimir("=== Ciclo Para ===");
+   57 ? para (entero i = 0; i < 4; i = i + 1) {
+   58 ?     decimal cuadrado = i * i;
+   59 ?     imprimir(cuadrado);
+   60 ? }
+   61 ? 
+   62 ? // Sentencia elegir (switch-case)
+   63 ? entero opcion = 2;
+   64 ? imprimir("=== Elegir (Switch) ===");
+   65 ? elegir (opcion) {
+   66 ?     caso 1:
+   67 ?         imprimir("Opci?n uno");
+   68 ?         romper;
+   69 ?     caso 2:
+   70 ?         imprimir("Opci?n dos");
+   71 ?         romper;
+   72 ?     caso 3:
+   73 ?         imprimir("Opci?n tres");
+   74 ?         romper;
+   75 ?     defecto:
+   76 ?         imprimir("Opci?n no v?lida");
+   77 ?         romper;
+   78 ? }
+   79 ? 
+   80 ? // Uso de cadenas
+   81 ? cadena saludo = "Hola " + nombre;
+   82 ? imprimir(saludo);
+   83 ? imprimir("=== Fin del programa ===");
+
+??????????????????????????????????????????????????????????????
+  FASE 1: AN?LISIS L?XICO
+??????????????????????????????????????????????????????????????
+
+  Tokens encontrados: 309
+
+  <ENTERO            , "entero"> [L?nea 3, Col 1]
+  <ID                , "edad"> [L?nea 3, Col 8]
+  <IGUAL             , "="> [L?nea 3, Col 13]
+  <NUM_ENTERO        , "20"> [L?nea 3, Col 15]
+  <PUNTO_COMA        , ";"> [L?nea 3, Col 17]
+  <DECIMAL           , "decimal"> [L?nea 4, Col 1]
+  <ID                , "precio"> [L?nea 4, Col 9]
+  <IGUAL             , "="> [L?nea 4, Col 16]
+  <NUM_DECIMAL       , "45.50"> [L?nea 4, Col 18]
+  <PUNTO_COMA        , ";"> [L?nea 4, Col 23]
+  <CADENA            , "cadena"> [L?nea 5, Col 1]
+  <ID                , "nombre"> [L?nea 5, Col 8]
+  <IGUAL             , "="> [L?nea 5, Col 15]
+  <CADENA_LITERAL    , "Estudiante"> [L?nea 5, Col 17]
+  <PUNTO_COMA        , ";"> [L?nea 5, Col 29]
+  <ENTERO            , "entero"> [L?nea 6, Col 1]
+  <ID                , "resultado"> [L?nea 6, Col 8]
+  <IGUAL             , "="> [L?nea 6, Col 18]
+  <NUM_ENTERO        , "0"> [L?nea 6, Col 20]
+  <PUNTO_COMA        , ";"> [L?nea 6, Col 21]
+  <CADENA            , "cadena"> [L?nea 7, Col 1]
+  <ID                , "mensaje"> [L?nea 7, Col 8]
+  <IGUAL             , "="> [L?nea 7, Col 16]
+  <CADENA_LITERAL    , ""> [L?nea 7, Col 18]
+  <PUNTO_COMA        , ";"> [L?nea 7, Col 20]
+  <ENTERO            , "entero"> [L?nea 10, Col 1]
+  <ID                , "suma"> [L?nea 10, Col 8]
+  <IGUAL             , "="> [L?nea 10, Col 13]
+  <NUM_ENTERO        , "10"> [L?nea 10, Col 15]
+  <SUMA              , "+"> [L?nea 10, Col 18]
+  <NUM_ENTERO        , "5"> [L?nea 10, Col 20]
+  <PUNTO_COMA        , ";"> [L?nea 10, Col 21]
+  <ENTERO            , "entero"> [L?nea 11, Col 1]
+  <ID                , "resta"> [L?nea 11, Col 8]
+  <IGUAL             , "="> [L?nea 11, Col 14]
+  <NUM_ENTERO        , "20"> [L?nea 11, Col 16]
+  <RESTA             , "-"> [L?nea 11, Col 19]
+  <NUM_ENTERO        , "8"> [L?nea 11, Col 21]
+  <PUNTO_COMA        , ";"> [L?nea 11, Col 22]
+  <DECIMAL           , "decimal"> [L?nea 12, Col 1]
+  <ID                , "multiplicacion"> [L?nea 12, Col 9]
+  <IGUAL             , "="> [L?nea 12, Col 24]
+  <NUM_DECIMAL       , "3.5"> [L?nea 12, Col 26]
+  <MULTIPLICACION    , "*"> [L?nea 12, Col 30]
+  <NUM_ENTERO        , "2"> [L?nea 12, Col 32]
+  <PUNTO_COMA        , ";"> [L?nea 12, Col 33]
+  <DECIMAL           , "decimal"> [L?nea 13, Col 1]
+  <ID                , "division"> [L?nea 13, Col 9]
+  <IGUAL             , "="> [L?nea 13, Col 18]
+  <NUM_ENTERO        , "100"> [L?nea 13, Col 20]
+  <DIVISION          , "/"> [L?nea 13, Col 24]
+  <NUM_ENTERO        , "4"> [L?nea 13, Col 26]
+  <PUNTO_COMA        , ";"> [L?nea 13, Col 27]
+  <IMPRIMIR          , "imprimir"> [L?nea 16, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 16, Col 9]
+  <CADENA_LITERAL    , "=== Operaciones Aritm?ticas ==="> [L?nea 16, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 16, Col 43]
+  <PUNTO_COMA        , ";"> [L?nea 16, Col 44]
+  <IMPRIMIR          , "imprimir"> [L?nea 17, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 17, Col 9]
+  <ID                , "suma"> [L?nea 17, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 17, Col 14]
+  <PUNTO_COMA        , ";"> [L?nea 17, Col 15]
+  <IMPRIMIR          , "imprimir"> [L?nea 18, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 18, Col 9]
+  <ID                , "resta"> [L?nea 18, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 18, Col 15]
+  <PUNTO_COMA        , ";"> [L?nea 18, Col 16]
+  <IMPRIMIR          , "imprimir"> [L?nea 19, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 19, Col 9]
+  <ID                , "multiplicacion"> [L?nea 19, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 19, Col 24]
+  <PUNTO_COMA        , ";"> [L?nea 19, Col 25]
+  <IMPRIMIR          , "imprimir"> [L?nea 20, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 20, Col 9]
+  <ID                , "division"> [L?nea 20, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 20, Col 18]
+  <PUNTO_COMA        , ";"> [L?nea 20, Col 19]
+  <IMPRIMIR          , "imprimir"> [L?nea 23, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 23, Col 9]
+  <CADENA_LITERAL    , "Ingrese su edad:"> [L?nea 23, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 23, Col 28]
+  <PUNTO_COMA        , ";"> [L?nea 23, Col 29]
+  <LEER              , "leer"> [L?nea 24, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 24, Col 5]
+  <ID                , "edad"> [L?nea 24, Col 6]
+  <PARENTESIS_DER    , ")"> [L?nea 24, Col 10]
+  <PUNTO_COMA        , ";"> [L?nea 24, Col 11]
+  <IMPRIMIR          , "imprimir"> [L?nea 25, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 25, Col 9]
+  <CADENA_LITERAL    , "Ingrese su nombre:"> [L?nea 25, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 25, Col 30]
+  <PUNTO_COMA        , ";"> [L?nea 25, Col 31]
+  <LEER              , "leer"> [L?nea 26, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 26, Col 5]
+  <ID                , "nombre"> [L?nea 26, Col 6]
+  <PARENTESIS_DER    , ")"> [L?nea 26, Col 12]
+  <PUNTO_COMA        , ";"> [L?nea 26, Col 13]
+  <SI                , "si"> [L?nea 29, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 29, Col 4]
+  <ID                , "edad"> [L?nea 29, Col 5]
+  <MAYOR_IGUAL       , ">="> [L?nea 29, Col 10]
+  <NUM_ENTERO        , "18"> [L?nea 29, Col 13]
+  <PARENTESIS_DER    , ")"> [L?nea 29, Col 15]
+  <LLAVE_IZQ         , "{"> [L?nea 29, Col 17]
+  <IMPRIMIR          , "imprimir"> [L?nea 30, Col 5]
+  <PARENTESIS_IZQ    , "("> [L?nea 30, Col 13]
+  <CADENA_LITERAL    , "Es mayor de edad"> [L?nea 30, Col 14]
+  <PARENTESIS_DER    , ")"> [L?nea 30, Col 32]
+  <PUNTO_COMA        , ";"> [L?nea 30, Col 33]
+  <ID                , "resultado"> [L?nea 31, Col 5]
+  <IGUAL             , "="> [L?nea 31, Col 15]
+  <ID                , "edad"> [L?nea 31, Col 17]
+  <MULTIPLICACION    , "*"> [L?nea 31, Col 22]
+  <NUM_ENTERO        , "2"> [L?nea 31, Col 24]
+  <PUNTO_COMA        , ";"> [L?nea 31, Col 25]
+  <IMPRIMIR          , "imprimir"> [L?nea 32, Col 5]
+  <PARENTESIS_IZQ    , "("> [L?nea 32, Col 13]
+  <ID                , "resultado"> [L?nea 32, Col 14]
+  <PARENTESIS_DER    , ")"> [L?nea 32, Col 23]
+  <PUNTO_COMA        , ";"> [L?nea 32, Col 24]
+  <LLAVE_DER         , "}"> [L?nea 33, Col 1]
+  <SINO              , "sino"> [L?nea 33, Col 3]
+  <LLAVE_IZQ         , "{"> [L?nea 33, Col 8]
+  <IMPRIMIR          , "imprimir"> [L?nea 34, Col 5]
+  <PARENTESIS_IZQ    , "("> [L?nea 34, Col 13]
+  <CADENA_LITERAL    , "Es menor de edad"> [L?nea 34, Col 14]
+  <PARENTESIS_DER    , ")"> [L?nea 34, Col 32]
+  <PUNTO_COMA        , ";"> [L?nea 34, Col 33]
+  <ID                , "resultado"> [L?nea 35, Col 5]
+  <IGUAL             , "="> [L?nea 35, Col 15]
+  <ID                , "edad"> [L?nea 35, Col 17]
+  <SUMA              , "+"> [L?nea 35, Col 22]
+  <NUM_ENTERO        , "5"> [L?nea 35, Col 24]
+  <PUNTO_COMA        , ";"> [L?nea 35, Col 25]
+  <IMPRIMIR          , "imprimir"> [L?nea 36, Col 5]
+  <PARENTESIS_IZQ    , "("> [L?nea 36, Col 13]
+  <ID                , "resultado"> [L?nea 36, Col 14]
+  <PARENTESIS_DER    , ")"> [L?nea 36, Col 23]
+  <PUNTO_COMA        , ";"> [L?nea 36, Col 24]
+  <LLAVE_DER         , "}"> [L?nea 37, Col 1]
+  <ENTERO            , "entero"> [L?nea 40, Col 1]
+  <ID                , "contador"> [L?nea 40, Col 8]
+  <IGUAL             , "="> [L?nea 40, Col 17]
+  <NUM_ENTERO        , "1"> [L?nea 40, Col 19]
+  <PUNTO_COMA        , ";"> [L?nea 40, Col 20]
+  <IMPRIMIR          , "imprimir"> [L?nea 41, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 41, Col 9]
+  <CADENA_LITERAL    , "=== Ciclo Mientras ==="> [L?nea 41, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 41, Col 34]
+  <PUNTO_COMA        , ";"> [L?nea 41, Col 35]
+  <MIENTRAS          , "mientras"> [L?nea 42, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 42, Col 10]
+  <ID                , "contador"> [L?nea 42, Col 11]
+  <MENOR_IGUAL       , "<="> [L?nea 42, Col 20]
+  <NUM_ENTERO        , "3"> [L?nea 42, Col 23]
+  <PARENTESIS_DER    , ")"> [L?nea 42, Col 24]
+  <LLAVE_IZQ         , "{"> [L?nea 42, Col 26]
+  <IMPRIMIR          , "imprimir"> [L?nea 43, Col 5]
+  <PARENTESIS_IZQ    , "("> [L?nea 43, Col 13]
+  <ID                , "contador"> [L?nea 43, Col 14]
+  <PARENTESIS_DER    , ")"> [L?nea 43, Col 22]
+  <PUNTO_COMA        , ";"> [L?nea 43, Col 23]
+  <ID                , "contador"> [L?nea 44, Col 5]
+  <IGUAL             , "="> [L?nea 44, Col 14]
+  <ID                , "contador"> [L?nea 44, Col 16]
+  <SUMA              , "+"> [L?nea 44, Col 25]
+  <NUM_ENTERO        , "1"> [L?nea 44, Col 27]
+  <PUNTO_COMA        , ";"> [L?nea 44, Col 28]
+  <LLAVE_DER         , "}"> [L?nea 45, Col 1]
+  <ENTERO            , "entero"> [L?nea 48, Col 1]
+  <ID                , "num"> [L?nea 48, Col 8]
+  <IGUAL             , "="> [L?nea 48, Col 12]
+  <NUM_ENTERO        , "5"> [L?nea 48, Col 14]
+  <PUNTO_COMA        , ";"> [L?nea 48, Col 15]
+  <IMPRIMIR          , "imprimir"> [L?nea 49, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 49, Col 9]
+  <CADENA_LITERAL    , "=== Ciclo Hacer-Mientras ==="> [L?nea 49, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 49, Col 40]
+  <PUNTO_COMA        , ";"> [L?nea 49, Col 41]
+  <HACER             , "hacer"> [L?nea 50, Col 1]
+  <LLAVE_IZQ         , "{"> [L?nea 50, Col 7]
+  <IMPRIMIR          , "imprimir"> [L?nea 51, Col 5]
+  <PARENTESIS_IZQ    , "("> [L?nea 51, Col 13]
+  <ID                , "num"> [L?nea 51, Col 14]
+  <PARENTESIS_DER    , ")"> [L?nea 51, Col 17]
+  <PUNTO_COMA        , ";"> [L?nea 51, Col 18]
+  <ID                , "num"> [L?nea 52, Col 5]
+  <IGUAL             , "="> [L?nea 52, Col 9]
+  <ID                , "num"> [L?nea 52, Col 11]
+  <RESTA             , "-"> [L?nea 52, Col 15]
+  <NUM_ENTERO        , "1"> [L?nea 52, Col 17]
+  <PUNTO_COMA        , ";"> [L?nea 52, Col 18]
+  <LLAVE_DER         , "}"> [L?nea 53, Col 1]
+  <MIENTRAS          , "mientras"> [L?nea 53, Col 3]
+  <PARENTESIS_IZQ    , "("> [L?nea 53, Col 12]
+  <ID                , "num"> [L?nea 53, Col 13]
+  <MAYOR             , ">"> [L?nea 53, Col 17]
+  <NUM_ENTERO        , "3"> [L?nea 53, Col 19]
+  <PARENTESIS_DER    , ")"> [L?nea 53, Col 20]
+  <PUNTO_COMA        , ";"> [L?nea 53, Col 21]
+  <IMPRIMIR          , "imprimir"> [L?nea 56, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 56, Col 9]
+  <CADENA_LITERAL    , "=== Ciclo Para ==="> [L?nea 56, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 56, Col 30]
+  <PUNTO_COMA        , ";"> [L?nea 56, Col 31]
+  <PARA              , "para"> [L?nea 57, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 57, Col 6]
+  <ENTERO            , "entero"> [L?nea 57, Col 7]
+  <ID                , "i"> [L?nea 57, Col 14]
+  <IGUAL             , "="> [L?nea 57, Col 16]
+  <NUM_ENTERO        , "0"> [L?nea 57, Col 18]
+  <PUNTO_COMA        , ";"> [L?nea 57, Col 19]
+  <ID                , "i"> [L?nea 57, Col 21]
+  <MENOR             , "<"> [L?nea 57, Col 23]
+  <NUM_ENTERO        , "4"> [L?nea 57, Col 25]
+  <PUNTO_COMA        , ";"> [L?nea 57, Col 26]
+  <ID                , "i"> [L?nea 57, Col 28]
+  <IGUAL             , "="> [L?nea 57, Col 30]
+  <ID                , "i"> [L?nea 57, Col 32]
+  <SUMA              , "+"> [L?nea 57, Col 34]
+  <NUM_ENTERO        , "1"> [L?nea 57, Col 36]
+  <PARENTESIS_DER    , ")"> [L?nea 57, Col 37]
+  <LLAVE_IZQ         , "{"> [L?nea 57, Col 39]
+  <DECIMAL           , "decimal"> [L?nea 58, Col 5]
+  <ID                , "cuadrado"> [L?nea 58, Col 13]
+  <IGUAL             , "="> [L?nea 58, Col 22]
+  <ID                , "i"> [L?nea 58, Col 24]
+  <MULTIPLICACION    , "*"> [L?nea 58, Col 26]
+  <ID                , "i"> [L?nea 58, Col 28]
+  <PUNTO_COMA        , ";"> [L?nea 58, Col 29]
+  <IMPRIMIR          , "imprimir"> [L?nea 59, Col 5]
+  <PARENTESIS_IZQ    , "("> [L?nea 59, Col 13]
+  <ID                , "cuadrado"> [L?nea 59, Col 14]
+  <PARENTESIS_DER    , ")"> [L?nea 59, Col 22]
+  <PUNTO_COMA        , ";"> [L?nea 59, Col 23]
+  <LLAVE_DER         , "}"> [L?nea 60, Col 1]
+  <ENTERO            , "entero"> [L?nea 63, Col 1]
+  <ID                , "opcion"> [L?nea 63, Col 8]
+  <IGUAL             , "="> [L?nea 63, Col 15]
+  <NUM_ENTERO        , "2"> [L?nea 63, Col 17]
+  <PUNTO_COMA        , ";"> [L?nea 63, Col 18]
+  <IMPRIMIR          , "imprimir"> [L?nea 64, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 64, Col 9]
+  <CADENA_LITERAL    , "=== Elegir (Switch) ==="> [L?nea 64, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 64, Col 35]
+  <PUNTO_COMA        , ";"> [L?nea 64, Col 36]
+  <ELEGIR            , "elegir"> [L?nea 65, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 65, Col 8]
+  <ID                , "opcion"> [L?nea 65, Col 9]
+  <PARENTESIS_DER    , ")"> [L?nea 65, Col 15]
+  <LLAVE_IZQ         , "{"> [L?nea 65, Col 17]
+  <CASO              , "caso"> [L?nea 66, Col 5]
+  <NUM_ENTERO        , "1"> [L?nea 66, Col 10]
+  <DOS_PUNTOS        , ":"> [L?nea 66, Col 11]
+  <IMPRIMIR          , "imprimir"> [L?nea 67, Col 9]
+  <PARENTESIS_IZQ    , "("> [L?nea 67, Col 17]
+  <CADENA_LITERAL    , "Opci?n uno"> [L?nea 67, Col 18]
+  <PARENTESIS_DER    , ")"> [L?nea 67, Col 30]
+  <PUNTO_COMA        , ";"> [L?nea 67, Col 31]
+  <ROMPER            , "romper"> [L?nea 68, Col 9]
+  <PUNTO_COMA        , ";"> [L?nea 68, Col 15]
+  <CASO              , "caso"> [L?nea 69, Col 5]
+  <NUM_ENTERO        , "2"> [L?nea 69, Col 10]
+  <DOS_PUNTOS        , ":"> [L?nea 69, Col 11]
+  <IMPRIMIR          , "imprimir"> [L?nea 70, Col 9]
+  <PARENTESIS_IZQ    , "("> [L?nea 70, Col 17]
+  <CADENA_LITERAL    , "Opci?n dos"> [L?nea 70, Col 18]
+  <PARENTESIS_DER    , ")"> [L?nea 70, Col 30]
+  <PUNTO_COMA        , ";"> [L?nea 70, Col 31]
+  <ROMPER            , "romper"> [L?nea 71, Col 9]
+  <PUNTO_COMA        , ";"> [L?nea 71, Col 15]
+  <CASO              , "caso"> [L?nea 72, Col 5]
+  <NUM_ENTERO        , "3"> [L?nea 72, Col 10]
+  <DOS_PUNTOS        , ":"> [L?nea 72, Col 11]
+  <IMPRIMIR          , "imprimir"> [L?nea 73, Col 9]
+  <PARENTESIS_IZQ    , "("> [L?nea 73, Col 17]
+  <CADENA_LITERAL    , "Opci?n tres"> [L?nea 73, Col 18]
+  <PARENTESIS_DER    , ")"> [L?nea 73, Col 31]
+  <PUNTO_COMA        , ";"> [L?nea 73, Col 32]
+  <ROMPER            , "romper"> [L?nea 74, Col 9]
+  <PUNTO_COMA        , ";"> [L?nea 74, Col 15]
+  <DEFECTO           , "defecto"> [L?nea 75, Col 5]
+  <DOS_PUNTOS        , ":"> [L?nea 75, Col 12]
+  <IMPRIMIR          , "imprimir"> [L?nea 76, Col 9]
+  <PARENTESIS_IZQ    , "("> [L?nea 76, Col 17]
+  <CADENA_LITERAL    , "Opci?n no v?lida"> [L?nea 76, Col 18]
+  <PARENTESIS_DER    , ")"> [L?nea 76, Col 36]
+  <PUNTO_COMA        , ";"> [L?nea 76, Col 37]
+  <ROMPER            , "romper"> [L?nea 77, Col 9]
+  <PUNTO_COMA        , ";"> [L?nea 77, Col 15]
+  <LLAVE_DER         , "}"> [L?nea 78, Col 1]
+  <CADENA            , "cadena"> [L?nea 81, Col 1]
+  <ID                , "saludo"> [L?nea 81, Col 8]
+  <IGUAL             , "="> [L?nea 81, Col 15]
+  <CADENA_LITERAL    , "Hola "> [L?nea 81, Col 17]
+  <SUMA              , "+"> [L?nea 81, Col 25]
+  <ID                , "nombre"> [L?nea 81, Col 27]
+  <PUNTO_COMA        , ";"> [L?nea 81, Col 33]
+  <IMPRIMIR          , "imprimir"> [L?nea 82, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 82, Col 9]
+  <ID                , "saludo"> [L?nea 82, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 82, Col 16]
+  <PUNTO_COMA        , ";"> [L?nea 82, Col 17]
+  <IMPRIMIR          , "imprimir"> [L?nea 83, Col 1]
+  <PARENTESIS_IZQ    , "("> [L?nea 83, Col 9]
+  <CADENA_LITERAL    , "=== Fin del programa ==="> [L?nea 83, Col 10]
+  <PARENTESIS_DER    , ")"> [L?nea 83, Col 36]
+  <PUNTO_COMA        , ";"> [L?nea 83, Col 37]
+
+????????????????????????????????????????????????????
+?            TABLA DE S?MBOLOS (L?XICO)            ?
+????????????????????????????????????????????????????
+? Lexema                ? Categor?a                ?
+????????????????????????????????????????????????????
+? entero                ? ENTERO                   ?
+? edad                  ? ID                       ?
+? 20                    ? NUM_ENTERO               ?
+? decimal               ? DECIMAL                  ?
+? precio                ? ID                       ?
+? 45.50                 ? NUM_DECIMAL              ?
+? cadena                ? CADENA                   ?
+? nombre                ? ID                       ?
+? resultado             ? ID                       ?
+? 0                     ? NUM_ENTERO               ?
+? mensaje               ? ID                       ?
+? suma                  ? ID                       ?
+? 10                    ? NUM_ENTERO               ?
+? 5                     ? NUM_ENTERO               ?
+? resta                 ? ID                       ?
+? 8                     ? NUM_ENTERO               ?
+? multiplicacion        ? ID                       ?
+? 3.5                   ? NUM_DECIMAL              ?
+? 2                     ? NUM_ENTERO               ?
+? division              ? ID                       ?
+? 100                   ? NUM_ENTERO               ?
+? 4                     ? NUM_ENTERO               ?
+? imprimir              ? IMPRIMIR                 ?
+? leer                  ? LEER                     ?
+? si                    ? SI                       ?
+? 18                    ? NUM_ENTERO               ?
+? sino                  ? SINO                     ?
+? contador              ? ID                       ?
+? 1                     ? NUM_ENTERO               ?
+? mientras              ? MIENTRAS                 ?
+? 3                     ? NUM_ENTERO               ?
+? num                   ? ID                       ?
+? hacer                 ? HACER                    ?
+? para                  ? PARA                     ?
+? i                     ? ID                       ?
+? cuadrado              ? ID                       ?
+? opcion                ? ID                       ?
+? elegir                ? ELEGIR                   ?
+? caso                  ? CASO                     ?
+? romper                ? ROMPER                   ?
+? defecto               ? DEFECTO                  ?
+? saludo                ? ID                       ?
+????????????????????????????????????????????????????
+
+  ? An?lisis l?xico completado sin errores
+
+??????????????????????????????????????????????????????????????
+  FASE 2: AN?LISIS SINT?CTICO
+??????????????????????????????????????????????????????????????
+
+  ?RBOL SINT?CTICO ABSTRACTO (AST):
+
+  ? PROGRAMA
+    ??? DECLARAR entero edad
+    ?   ??? INT: 20
+    ??? DECLARAR decimal precio
+    ?   ??? FLOAT: 45.5
+    ??? DECLARAR cadena nombre
+    ?   ??? STR: "Estudiante"
+    ??? DECLARAR entero resultado
+    ?   ??? INT: 0
+    ??? DECLARAR cadena mensaje
+    ?   ??? STR: ""
+    ??? DECLARAR entero suma
+    ?   ??? OP: +
+    ?       ??? INT: 10
+    ?       ??? INT: 5
+    ??? DECLARAR entero resta
+    ?   ??? OP: -
+    ?       ??? INT: 20
+    ?       ??? INT: 8
+    ??? DECLARAR decimal multiplicacion
+    ?   ??? OP: *
+    ?       ??? FLOAT: 3.5
+    ?       ??? INT: 2
+    ??? DECLARAR decimal division
+    ?   ??? OP: /
+    ?       ??? INT: 100
+    ?       ??? INT: 4
+    ??? IMPRIMIR
+    ?   ??? STR: "=== Operaciones Aritm?ticas ==="
+    ??? IMPRIMIR
+    ?   ??? ID: suma
+    ??? IMPRIMIR
+    ?   ??? ID: resta
+    ??? IMPRIMIR
+    ?   ??? ID: multiplicacion
+    ??? IMPRIMIR
+    ?   ??? ID: division
+    ??? IMPRIMIR
+    ?   ??? STR: "Ingrese su edad:"
+    ??? LEER ? edad
+    ??? IMPRIMIR
+    ?   ??? STR: "Ingrese su nombre:"
+    ??? LEER ? nombre
+    ??? SI
+    ?   ??? OP: >=
+    ?   ?   ??? ID: edad
+    ?   ?   ??? INT: 18
+    ?   ??? BLOQUE
+    ?   ?   ??? IMPRIMIR
+    ?   ?   ?   ??? STR: "Es mayor de edad"
+    ?   ?   ??? ASIGNAR ? resultado
+    ?   ?   ?   ??? OP: *
+    ?   ?   ?       ??? ID: edad
+    ?   ?   ?       ??? INT: 2
+    ?   ?   ??? IMPRIMIR
+    ?   ?       ??? ID: resultado
+    ?   ??? SINO
+    ?   ??? BLOQUE
+    ?       ??? IMPRIMIR
+    ?       ?   ??? STR: "Es menor de edad"
+    ?       ??? ASIGNAR ? resultado
+    ?       ?   ??? OP: +
+    ?       ?       ??? ID: edad
+    ?       ?       ??? INT: 5
+    ?       ??? IMPRIMIR
+    ?           ??? ID: resultado
+    ??? DECLARAR entero contador
+    ?   ??? INT: 1
+    ??? IMPRIMIR
+    ?   ??? STR: "=== Ciclo Mientras ==="
+    ??? MIENTRAS
+    ?   ??? OP: <=
+    ?   ?   ??? ID: contador
+    ?   ?   ??? INT: 3
+    ?   ??? BLOQUE
+    ?       ??? IMPRIMIR
+    ?       ?   ??? ID: contador
+    ?       ??? ASIGNAR ? contador
+    ?           ??? OP: +
+    ?               ??? ID: contador
+    ?               ??? INT: 1
+    ??? DECLARAR entero num
+    ?   ??? INT: 5
+    ??? IMPRIMIR
+    ?   ??? STR: "=== Ciclo Hacer-Mientras ==="
+    ??? HACER-MIENTRAS
+    ?   ??? BLOQUE
+    ?   ?   ??? IMPRIMIR
+    ?   ?   ?   ??? ID: num
+    ?   ?   ??? ASIGNAR ? num
+    ?   ?       ??? OP: -
+    ?   ?           ??? ID: num
+    ?   ?           ??? INT: 1
+    ?   ??? OP: >
+    ?       ??? ID: num
+    ?       ??? INT: 3
+    ??? IMPRIMIR
+    ?   ??? STR: "=== Ciclo Para ==="
+    ??? PARA
+    ?   ??? DECLARAR entero i
+    ?   ?   ??? INT: 0
+    ?   ??? OP: <
+    ?   ?   ??? ID: i
+    ?   ?   ??? INT: 4
+    ?   ??? ASIGNAR ? i
+    ?   ?   ??? OP: +
+    ?   ?       ??? ID: i
+    ?   ?       ??? INT: 1
+    ?   ??? BLOQUE
+    ?       ??? DECLARAR decimal cuadrado
+    ?       ?   ??? OP: *
+    ?       ?       ??? ID: i
+    ?       ?       ??? ID: i
+    ?       ??? IMPRIMIR
+    ?           ??? ID: cuadrado
+    ??? DECLARAR entero opcion
+    ?   ??? INT: 2
+    ??? IMPRIMIR
+    ?   ??? STR: "=== Elegir (Switch) ==="
+    ??? ELEGIR
+    ?   ??? ID: opcion
+    ?   ??? CASO
+    ?   ?   ??? INT: 1
+    ?   ?   ??? IMPRIMIR
+    ?   ?   ?   ??? STR: "Opci?n uno"
+    ?   ?   ??? ROMPER
+    ?   ??? CASO
+    ?   ?   ??? INT: 2
+    ?   ?   ??? IMPRIMIR
+    ?   ?   ?   ??? STR: "Opci?n dos"
+    ?   ?   ??? ROMPER
+    ?   ??? CASO
+    ?   ?   ??? INT: 3
+    ?   ?   ??? IMPRIMIR
+    ?   ?   ?   ??? STR: "Opci?n tres"
+    ?   ?   ??? ROMPER
+    ?   ??? DEFECTO
+    ?       ??? IMPRIMIR
+    ?       ?   ??? STR: "Opci?n no v?lida"
+    ?       ??? ROMPER
+    ??? DECLARAR cadena saludo
+    ?   ??? OP: +
+    ?       ??? STR: "Hola "
+    ?       ??? ID: nombre
+    ??? IMPRIMIR
+    ?   ??? ID: saludo
+    ??? IMPRIMIR
+        ??? STR: "=== Fin del programa ==="
+
+  ? An?lisis sint?ctico completado sin errores
+
+??????????????????????????????????????????????????????????????
+  FASE 3: AN?LISIS SEM?NTICO
+??????????????????????????????????????????????????????????????
+
+????????????????????????????????????????????????????
+?          TABLA DE S?MBOLOS (SEM?NTICO)           ?
+????????????????????????????????????????????????????
+? Variable              ? Tipo de Dato             ?
+????????????????????????????????????????????????????
+? edad                  ? entero                   ?
+? precio                ? decimal                  ?
+? nombre                ? cadena                   ?
+? resultado             ? entero                   ?
+? mensaje               ? cadena                   ?
+? suma                  ? entero                   ?
+? resta                 ? entero                   ?
+? multiplicacion        ? decimal                  ?
+? division              ? decimal                  ?
+? contador              ? entero                   ?
+? num                   ? entero                   ?
+? i                     ? entero                   ?
+? cuadrado              ? decimal                  ?
+? opcion                ? entero                   ?
+? saludo                ? cadena                   ?
+????????????????????????????????????????????????????
+
+  ? An?lisis sem?ntico completado sin errores
+
+??????????????????????????????????????????????????????????????
+  FASE 4: GENERACI?N DE C?DIGO INTERMEDIO
+??????????????????????????????????????????????????????????????
+
+?????????????????????????????????????????????????????????????????????
+?                  C?DIGO INTERMEDIO (CU?DRUPLAS)                   ?
+????????????????????????????????????????????????????????????????????
+? #    ? Operador   ? Arg1       ? Arg2       ? Resultado          ?
+????????????????????????????????????????????????????????????????????
+? 0    ? DECL       ? entero     ? -          ? edad               ?
+? 1    ? =          ? 20         ? -          ? edad               ?
+? 2    ? DECL       ? decimal    ? -          ? precio             ?
+? 3    ? =          ? 45.5       ? -          ? precio             ?
+? 4    ? DECL       ? cadena     ? -          ? nombre             ?
+? 5    ? =          ? "Estudiant ? -          ? nombre             ?
+? 6    ? DECL       ? entero     ? -          ? resultado          ?
+? 7    ? =          ? 0          ? -          ? resultado          ?
+? 8    ? DECL       ? cadena     ? -          ? mensaje            ?
+? 9    ? =          ? ""         ? -          ? mensaje            ?
+? 10   ? DECL       ? entero     ? -          ? suma               ?
+? 11   ? +          ? 10         ? 5          ? t0                 ?
+? 12   ? =          ? t0         ? -          ? suma               ?
+? 13   ? DECL       ? entero     ? -          ? resta              ?
+? 14   ? -          ? 20         ? 8          ? t1                 ?
+? 15   ? =          ? t1         ? -          ? resta              ?
+? 16   ? DECL       ? decimal    ? -          ? multiplicacion     ?
+? 17   ? *          ? 3.5        ? 2          ? t2                 ?
+? 18   ? =          ? t2         ? -          ? multiplicacion     ?
+? 19   ? DECL       ? decimal    ? -          ? division           ?
+? 20   ? /          ? 100        ? 4          ? t3                 ?
+? 21   ? =          ? t3         ? -          ? division           ?
+? 22   ? PRINT      ? "=== Opera ? -          ? -                  ?
+? 23   ? PRINT      ? suma       ? -          ? -                  ?
+? 24   ? PRINT      ? resta      ? -          ? -                  ?
+? 25   ? PRINT      ? multiplica ? -          ? -                  ?
+? 26   ? PRINT      ? division   ? -          ? -                  ?
+? 27   ? PRINT      ? "Ingrese s ? -          ? -                  ?
+? 28   ? READ       ? -          ? -          ? edad               ?
+? 29   ? PRINT      ? "Ingrese s ? -          ? -                  ?
+? 30   ? READ       ? -          ? -          ? nombre             ?
+? 31   ? >=         ? edad       ? 18         ? t4                 ?
+? 32   ? IF_FALSE   ? t4         ? -          ? L0                 ?
+? 33   ? PRINT      ? "Es mayor  ? -          ? -                  ?
+? 34   ? *          ? edad       ? 2          ? t5                 ?
+? 35   ? =          ? t5         ? -          ? resultado          ?
+? 36   ? PRINT      ? resultado  ? -          ? -                  ?
+? 37   ? GOTO       ? -          ? -          ? L1                 ?
+? 38   ? LABEL      ? -          ? -          ? L0                 ?
+? 39   ? PRINT      ? "Es menor  ? -          ? -                  ?
+? 40   ? +          ? edad       ? 5          ? t6                 ?
+? 41   ? =          ? t6         ? -          ? resultado          ?
+? 42   ? PRINT      ? resultado  ? -          ? -                  ?
+? 43   ? LABEL      ? -          ? -          ? L1                 ?
+? 44   ? DECL       ? entero     ? -          ? contador           ?
+? 45   ? =          ? 1          ? -          ? contador           ?
+? 46   ? PRINT      ? "=== Ciclo ? -          ? -                  ?
+? 47   ? LABEL      ? -          ? -          ? L2                 ?
+? 48   ? <=         ? contador   ? 3          ? t7                 ?
+? 49   ? IF_FALSE   ? t7         ? -          ? L3                 ?
+? 50   ? PRINT      ? contador   ? -          ? -                  ?
+? 51   ? +          ? contador   ? 1          ? t8                 ?
+? 52   ? =          ? t8         ? -          ? contador           ?
+? 53   ? GOTO       ? -          ? -          ? L2                 ?
+? 54   ? LABEL      ? -          ? -          ? L3                 ?
+? 55   ? DECL       ? entero     ? -          ? num                ?
+? 56   ? =          ? 5          ? -          ? num                ?
+? 57   ? PRINT      ? "=== Ciclo ? -          ? -                  ?
+? 58   ? LABEL      ? -          ? -          ? L4                 ?
+? 59   ? PRINT      ? num        ? -          ? -                  ?
+? 60   ? -          ? num        ? 1          ? t9                 ?
+? 61   ? =          ? t9         ? -          ? num                ?
+? 62   ? >          ? num        ? 3          ? t10                ?
+? 63   ? IF_TRUE    ? t10        ? -          ? L4                 ?
+? 64   ? PRINT      ? "=== Ciclo ? -          ? -                  ?
+? 65   ? DECL       ? entero     ? -          ? i                  ?
+? 66   ? =          ? 0          ? -          ? i                  ?
+? 67   ? LABEL      ? -          ? -          ? L5                 ?
+? 68   ? <          ? i          ? 4          ? t11                ?
+? 69   ? IF_FALSE   ? t11        ? -          ? L6                 ?
+? 70   ? DECL       ? decimal    ? -          ? cuadrado           ?
+? 71   ? *          ? i          ? i          ? t12                ?
+? 72   ? =          ? t12        ? -          ? cuadrado           ?
+? 73   ? PRINT      ? cuadrado   ? -          ? -                  ?
+? 74   ? +          ? i          ? 1          ? t13                ?
+? 75   ? =          ? t13        ? -          ? i                  ?
+? 76   ? GOTO       ? -          ? -          ? L5                 ?
+? 77   ? LABEL      ? -          ? -          ? L6                 ?
+? 78   ? DECL       ? entero     ? -          ? opcion             ?
+? 79   ? =          ? 2          ? -          ? opcion             ?
+? 80   ? PRINT      ? "=== Elegi ? -          ? -                  ?
+? 81   ? ==         ? opcion     ? 1          ? t14                ?
+? 82   ? IF_TRUE    ? t14        ? -          ? L8                 ?
+? 83   ? ==         ? opcion     ? 2          ? t15                ?
+? 84   ? IF_TRUE    ? t15        ? -          ? L9                 ?
+? 85   ? ==         ? opcion     ? 3          ? t16                ?
+? 86   ? IF_TRUE    ? t16        ? -          ? L10                ?
+? 87   ? GOTO       ? -          ? -          ? L11                ?
+? 88   ? LABEL      ? -          ? -          ? L8                 ?
+? 89   ? PRINT      ? "Opci?n un ? -          ? -                  ?
+? 90   ? GOTO       ? -          ? -          ? L7                 ?
+? 91   ? LABEL      ? -          ? -          ? L9                 ?
+? 92   ? PRINT      ? "Opci?n do ? -          ? -                  ?
+? 93   ? GOTO       ? -          ? -          ? L7                 ?
+? 94   ? LABEL      ? -          ? -          ? L10                ?
+? 95   ? PRINT      ? "Opci?n tr ? -          ? -                  ?
+? 96   ? GOTO       ? -          ? -          ? L7                 ?
+? 97   ? LABEL      ? -          ? -          ? L11                ?
+? 98   ? PRINT      ? "Opci?n no ? -          ? -                  ?
+? 99   ? GOTO       ? -          ? -          ? L7                 ?
+? 100  ? LABEL      ? -          ? -          ? L7                 ?
+? 101  ? DECL       ? cadena     ? -          ? saludo             ?
+? 102  ? +          ? "Hola "    ? nombre     ? t17                ?
+? 103  ? =          ? t17        ? -          ? saludo             ?
+? 104  ? PRINT      ? saludo     ? -          ? -                  ?
+? 105  ? PRINT      ? "=== Fin d ? -          ? -                  ?
+????????????????????????????????????????????????????????????????????
+
+  ? C?digo intermedio generado: 106 cu?druplas
+
+??????????????????????????????????????????????????????????????
+  FASE 5: GENERACI?N DE C?DIGO OBJETO
+??????????????????????????????????????????????????????????????
+
+?????????????????????????????????????????????????
+?             C?DIGO OBJETO GENERADO            ?
+?????????????????????????????????????????????????
+? Dir   ? Instrucci?n                           ?
+?????????????????????????????????????????????????
+? 0     ? DECL_VAR edad entero                  ?
+? 1     ? PUSH 20                               ?
+? 2     ? STORE edad                            ?
+? 3     ? DECL_VAR precio decimal               ?
+? 4     ? PUSH 45.5                             ?
+? 5     ? STORE precio                          ?
+? 6     ? DECL_VAR nombre cadena                ?
+? 7     ? PUSH "Estudiante"                     ?
+? 8     ? STORE nombre                          ?
+? 9     ? DECL_VAR resultado entero             ?
+? 10    ? PUSH 0                                ?
+? 11    ? STORE resultado                       ?
+? 12    ? DECL_VAR mensaje cadena               ?
+? 13    ? PUSH ""                               ?
+? 14    ? STORE mensaje                         ?
+? 15    ? DECL_VAR suma entero                  ?
+? 16    ? PUSH 10                               ?
+? 17    ? PUSH 5                                ?
+? 18    ? ADD                                   ?
+? 19    ? STORE t0                              ?
+? 20    ? PUSH t0                               ?
+? 21    ? STORE suma                            ?
+? 22    ? DECL_VAR resta entero                 ?
+? 23    ? PUSH 20                               ?
+? 24    ? PUSH 8                                ?
+? 25    ? SUB                                   ?
+? 26    ? STORE t1                              ?
+? 27    ? PUSH t1                               ?
+? 28    ? STORE resta                           ?
+? 29    ? DECL_VAR multiplicacion decimal       ?
+? 30    ? PUSH 3.5                              ?
+? 31    ? PUSH 2                                ?
+? 32    ? MUL                                   ?
+? 33    ? STORE t2                              ?
+? 34    ? PUSH t2                               ?
+? 35    ? STORE multiplicacion                  ?
+? 36    ? DECL_VAR division decimal             ?
+? 37    ? PUSH 100                              ?
+? 38    ? PUSH 4                                ?
+? 39    ? DIV                                   ?
+? 40    ? STORE t3                              ?
+? 41    ? PUSH t3                               ?
+? 42    ? STORE division                        ?
+? 43    ? PUSH "=== Operaciones Aritm?ticas === ?
+? 44    ? OUT                                   ?
+? 45    ? PUSH suma                             ?
+? 46    ? OUT                                   ?
+? 47    ? PUSH resta                            ?
+? 48    ? OUT                                   ?
+? 49    ? PUSH multiplicacion                   ?
+? 50    ? OUT                                   ?
+? 51    ? PUSH division                         ?
+? 52    ? OUT                                   ?
+? 53    ? PUSH "Ingrese su edad:"               ?
+? 54    ? OUT                                   ?
+? 55    ? IN edad                               ?
+? 56    ? PUSH "Ingrese su nombre:"             ?
+? 57    ? OUT                                   ?
+? 58    ? IN nombre                             ?
+? 59    ? PUSH edad                             ?
+? 60    ? PUSH 18                               ?
+? 61    ? CMP_GE                                ?
+? 62    ? STORE t4                              ?
+? 63    ? PUSH t4                               ?
+? 64    ? JZ 76                                 ?
+? 65    ? PUSH "Es mayor de edad"               ?
+? 66    ? OUT                                   ?
+? 67    ? PUSH edad                             ?
+? 68    ? PUSH 2                                ?
+? 69    ? MUL                                   ?
+? 70    ? STORE t5                              ?
+? 71    ? PUSH t5                               ?
+? 72    ? STORE resultado                       ?
+? 73    ? PUSH resultado                        ?
+? 74    ? OUT                                   ?
+? 75    ? JMP 86                                ?
+? 76    ? PUSH "Es menor de edad"               ?
+? 77    ? OUT                                   ?
+? 78    ? PUSH edad                             ?
+? 79    ? PUSH 5                                ?
+? 80    ? ADD                                   ?
+? 81    ? STORE t6                              ?
+? 82    ? PUSH t6                               ?
+? 83    ? STORE resultado                       ?
+? 84    ? PUSH resultado                        ?
+? 85    ? OUT                                   ?
+? 86    ? DECL_VAR contador entero              ?
+? 87    ? PUSH 1                                ?
+? 88    ? STORE contador                        ?
+? 89    ? PUSH "=== Ciclo Mientras ==="         ?
+? 90    ? OUT                                   ?
+? 91    ? PUSH contador                         ?
+? 92    ? PUSH 3                                ?
+? 93    ? CMP_LE                                ?
+? 94    ? STORE t7                              ?
+? 95    ? PUSH t7                               ?
+? 96    ? JZ 106                                ?
+? 97    ? PUSH contador                         ?
+? 98    ? OUT                                   ?
+? 99    ? PUSH contador                         ?
+? 100   ? PUSH 1                                ?
+? 101   ? ADD                                   ?
+? 102   ? STORE t8                              ?
+? 103   ? PUSH t8                               ?
+? 104   ? STORE contador                        ?
+? 105   ? JMP 91                                ?
+? 106   ? DECL_VAR num entero                   ?
+? 107   ? PUSH 5                                ?
+? 108   ? STORE num                             ?
+? 109   ? PUSH "=== Ciclo Hacer-Mientras ==="   ?
+? 110   ? OUT                                   ?
+? 111   ? PUSH num                              ?
+? 112   ? OUT                                   ?
+? 113   ? PUSH num                              ?
+? 114   ? PUSH 1                                ?
+? 115   ? SUB                                   ?
+? 116   ? STORE t9                              ?
+? 117   ? PUSH t9                               ?
+? 118   ? STORE num                             ?
+? 119   ? PUSH num                              ?
+? 120   ? PUSH 3                                ?
+? 121   ? CMP_GT                                ?
+? 122   ? STORE t10                             ?
+? 123   ? PUSH t10                              ?
+? 124   ? JNZ 111                               ?
+? 125   ? PUSH "=== Ciclo Para ==="             ?
+? 126   ? OUT                                   ?
+? 127   ? DECL_VAR i entero                     ?
+? 128   ? PUSH 0                                ?
+? 129   ? STORE i                               ?
+? 130   ? PUSH i                                ?
+? 131   ? PUSH 4                                ?
+? 132   ? CMP_LT                                ?
+? 133   ? STORE t11                             ?
+? 134   ? PUSH t11                              ?
+? 135   ? JZ 152                                ?
+? 136   ? DECL_VAR cuadrado decimal             ?
+? 137   ? PUSH i                                ?
+? 138   ? PUSH i                                ?
+? 139   ? MUL                                   ?
+? 140   ? STORE t12                             ?
+? 141   ? PUSH t12                              ?
+? 142   ? STORE cuadrado                        ?
+? 143   ? PUSH cuadrado                         ?
+? 144   ? OUT                                   ?
+? 145   ? PUSH i                                ?
+? 146   ? PUSH 1                                ?
+? 147   ? ADD                                   ?
+? 148   ? STORE t13                             ?
+? 149   ? PUSH t13                              ?
+? 150   ? STORE i                               ?
+? 151   ? JMP 130                               ?
+? 152   ? DECL_VAR opcion entero                ?
+? 153   ? PUSH 2                                ?
+? 154   ? STORE opcion                          ?
+? 155   ? PUSH "=== Elegir (Switch) ==="        ?
+? 156   ? OUT                                   ?
+? 157   ? PUSH opcion                           ?
+? 158   ? PUSH 1                                ?
+? 159   ? CMP_EQ                                ?
+? 160   ? STORE t14                             ?
+? 161   ? PUSH t14                              ?
+? 162   ? JNZ 176                               ?
+? 163   ? PUSH opcion                           ?
+? 164   ? PUSH 2                                ?
+? 165   ? CMP_EQ                                ?
+? 166   ? STORE t15                             ?
+? 167   ? PUSH t15                              ?
+? 168   ? JNZ 179                               ?
+? 169   ? PUSH opcion                           ?
+? 170   ? PUSH 3                                ?
+? 171   ? CMP_EQ                                ?
+? 172   ? STORE t16                             ?
+? 173   ? PUSH t16                              ?
+? 174   ? JNZ 182                               ?
+? 175   ? JMP 185                               ?
+? 176   ? PUSH "Opci?n uno"                     ?
+? 177   ? OUT                                   ?
+? 178   ? JMP 188                               ?
+? 179   ? PUSH "Opci?n dos"                     ?
+? 180   ? OUT                                   ?
+? 181   ? JMP 188                               ?
+? 182   ? PUSH "Opci?n tres"                    ?
+? 183   ? OUT                                   ?
+? 184   ? JMP 188                               ?
+? 185   ? PUSH "Opci?n no v?lida"               ?
+? 186   ? OUT                                   ?
+? 187   ? JMP 188                               ?
+? 188   ? DECL_VAR saludo cadena                ?
+? 189   ? PUSH "Hola "                          ?
+? 190   ? PUSH nombre                           ?
+? 191   ? ADD                                   ?
+? 192   ? STORE t17                             ?
+? 193   ? PUSH t17                              ?
+? 194   ? STORE saludo                          ?
+? 195   ? PUSH saludo                           ?
+? 196   ? OUT                                   ?
+? 197   ? PUSH "=== Fin del programa ==="       ?
+? 198   ? OUT                                   ?
+?????????????????????????????????????????????????
+
+  ? C?digo objeto guardado en: programa.obj
+  ? Total instrucciones: 199
+
+??????????????????????????????????????????????????????????????
+  FASE 6: EJECUCI?N DEL PROGRAMA
+??????????????????????????????????????????????????????????????
+
+?????????????????????????????????????????????????
+?          EJECUCI?N DEL C?DIGO OBJETO          ?
+?????????????????????????????????????????????????
+
+  >> === Operaciones Aritm?ticas ===
+  >> 15
+  >> 12
+  >> 7
+  >> 25
+  >> Ingrese su edad:
+  << Ingrese valor para 'edad' (entero):   >> Ingrese su nombre:
+  << Ingrese valor para 'nombre' (cadena):   >> Es mayor de edad
+  >> 50
+  >> === Ciclo Mientras ===
+  >> 1
+  >> 2
+  >> 3
+  >> === Ciclo Hacer-Mientras ===
+  >> 5
+  >> 4
+  >> === Ciclo Para ===
+  >> 0
+  >> 1
+  >> 4
+  >> 9
+  >> === Elegir (Switch) ===
+  >> Opci?n dos
+  >> Hola Gael
+  >> === Fin del programa ===
+
+?? Fin de ejecuci?n ??
+
+?????????????????????????????????????????????????????????????????
+?                    RESUMEN DE COMPILACI?N                     ?
+?????????????????????????????????????????????????????????????????
+?  Tokens generados:        309                                ?
+?  Cu?druplas generadas:    106                                ?
+?  Instrucciones objeto:    199                                ?
+?  Errores l?xicos:         0                                  ?
+?  Errores sint?cticos:     0                                  ?
+?  Errores sem?nticos:      0                                  ?
+?  Estado:                  COMPILACI?N EXITOSA                ?
+?????????????????????????????????????????????????????????????????

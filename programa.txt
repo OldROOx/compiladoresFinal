@@ -1,0 +1,83 @@
+// Programa de ejemplo - Lenguaje con palabras en español
+// Declaración de variables de diferentes tipos
+entero edad = 20;
+decimal precio = 45.50;
+cadena nombre = "Estudiante";
+entero resultado = 0;
+cadena mensaje = "";
+
+// Asignación de valores y expresiones aritméticas
+entero suma = 10 + 5;
+entero resta = 20 - 8;
+decimal multiplicacion = 3.5 * 2;
+decimal division = 100 / 4;
+
+// Imprimir resultados de expresiones
+imprimir("=== Operaciones Aritméticas ===");
+imprimir(suma);
+imprimir(resta);
+imprimir(multiplicacion);
+imprimir(division);
+
+// Lectura desde teclado
+imprimir("Ingrese su edad:");
+leer(edad);
+imprimir("Ingrese su nombre:");
+leer(nombre);
+
+// Sentencia si-sino (if-else)
+si (edad >= 18) {
+    imprimir("Es mayor de edad");
+    resultado = edad * 2;
+    imprimir(resultado);
+} sino {
+    imprimir("Es menor de edad");
+    resultado = edad + 5;
+    imprimir(resultado);
+}
+
+// Sentencia mientras (while)
+entero contador = 1;
+imprimir("=== Ciclo Mientras ===");
+mientras (contador <= 3) {
+    imprimir(contador);
+    contador = contador + 1;
+}
+
+// Sentencia hacer-mientras (do-while)
+entero num = 5;
+imprimir("=== Ciclo Hacer-Mientras ===");
+hacer {
+    imprimir(num);
+    num = num - 1;
+} mientras (num > 3);
+
+// Sentencia para (for)
+imprimir("=== Ciclo Para ===");
+para (entero i = 0; i < 4; i = i + 1) {
+    decimal cuadrado = i * i;
+    imprimir(cuadrado);
+}
+
+// Sentencia elegir (switch-case)
+entero opcion = 2;
+imprimir("=== Elegir (Switch) ===");
+elegir (opcion) {
+    caso 1:
+        imprimir("Opción uno");
+        romper;
+    caso 2:
+        imprimir("Opción dos");
+        romper;
+    caso 3:
+        imprimir("Opción tres");
+        romper;
+    defecto:
+        imprimir("Opción no válida");
+        romper;
+}
+
+// Uso de cadenas
+cadena saludo = "Hola " + nombre;
+imprimir(saludo);
+imprimir("=== Fin del programa ===");

@@ -1,0 +1,162 @@
+================================================================================
+         GRAMÁTICA DEL LENGUAJE - COMPILADOR EN ESPAÑOL
+         Universidad Politécnica de Chiapas
+         Compiladores e Intérpretes - Proyecto Final
+================================================================================
+
+1. PALABRAS RESERVADAS
+──────────────────────
+  entero       → Tipo de dato entero (equivalente a int)
+  decimal      → Tipo de dato decimal (equivalente a float)
+  cadena       → Tipo de dato cadena de texto (equivalente a String)
+  booleano     → Tipo de dato booleano (verdadero/falso)
+  si           → Sentencia condicional (equivalente a if)
+  sino         → Sentencia alternativa (equivalente a else)
+  mientras     → Ciclo while
+  hacer        → Ciclo do-while
+  para         → Ciclo for
+  elegir       → Sentencia switch
+  caso         → Caso dentro de elegir (equivalente a case)
+  defecto      → Caso por defecto (equivalente a default)
+  imprimir     → Función de salida (equivalente a print)
+  leer         → Función de entrada (equivalente a read/scanf)
+  verdadero    → Literal booleano true
+  falso        → Literal booleano false
+  romper       → Sentencia break
+
+2. OPERADORES
+─────────────
+  Aritméticos:      +  -  *  /
+  Comparación:      ==  !=  <  >  <=  >=
+  Lógicos:          &&  ||  !
+  Asignación:       =
+
+3. DELIMITADORES
+────────────────
+  (  )  {  }  ;  :  ,
+
+4. GRAMÁTICA EN BNF
+───────────────────
+
+<programa>         ::= <sentencia>*
+
+<sentencia>        ::= <declaracion>
+                     | <asignacion>
+                     | <si_sino>
+                     | <mientras>
+                     | <hacer_mientras>
+                     | <para>
+                     | <elegir>
+                     | <imprimir>
+                     | <leer>
+                     | <romper>
+                     | <bloque>
+
+<declaracion>      ::= <tipo> ID ( '=' <expresion> )? ';'
+
+<tipo>             ::= 'entero' | 'decimal' | 'cadena' | 'booleano'
+
+<asignacion>       ::= ID '=' <expresion> ';'
+
+<si_sino>          ::= 'si' '(' <expresion> ')' <bloque> ( 'sino' <bloque> )?
+
+<mientras>         ::= 'mientras' '(' <expresion> ')' <bloque>
+
+<hacer_mientras>   ::= 'hacer' <bloque> 'mientras' '(' <expresion> ')' ';'
+
+<para>             ::= 'para' '(' ( <declaracion> | <asignacion> )
+                       <expresion> ';' ID '=' <expresion> ')' <bloque>
+
+<elegir>           ::= 'elegir' '(' <expresion> ')' '{'
+                       <caso>*
+                       ( 'defecto' ':' <sentencia>* )?
+                       '}'
+
+<caso>             ::= 'caso' <primario> ':' <sentencia>*
+
+<imprimir>         ::= 'imprimir' '(' <expresion> ')' ';'
+
+<leer>             ::= 'leer' '(' ID ')' ';'
+
+<romper>           ::= 'romper' ';'
+
+<bloque>           ::= '{' <sentencia>* '}'
+
+<expresion>        ::= <expr_logica_o>
+
+<expr_logica_o>    ::= <expr_logica_y> ( '||' <expr_logica_y> )*
+
+<expr_logica_y>    ::= <expr_comparacion> ( '&&' <expr_comparacion> )*
+
+<expr_comparacion> ::= <expr_aditiva>
+                       ( ( '==' | '!=' | '<' | '>' | '<=' | '>=' )
+                         <expr_aditiva> )?
+
+<expr_aditiva>     ::= <expr_multiplicativa>
+                       ( ( '+' | '-' ) <expr_multiplicativa> )*
+
+<expr_multiplicativa> ::= <expr_unaria>
+                          ( ( '*' | '/' ) <expr_unaria> )*
+
+<expr_unaria>      ::= '-' <primario>
+                     | '!' <primario>
+                     | <primario>
+
+<primario>         ::= NUM_ENTERO
+                     | NUM_DECIMAL
+                     | CADENA_LITERAL
+                     | 'verdadero'
+                     | 'falso'
+                     | ID
+                     | '(' <expresion> ')'
+
+5. DEFINICIÓN DE TOKENS
+───────────────────────
+  ID              → Letra o '_' seguido de letras, dígitos o '_'
+                    Regex: [a-zA-Z_][a-zA-Z0-9_]*
+  NUM_ENTERO      → Secuencia de dígitos
+                    Regex: [0-9]+
+  NUM_DECIMAL     → Dígitos con punto decimal
+                    Regex: [0-9]+\.[0-9]+
+  CADENA_LITERAL  → Texto entre comillas dobles con secuencias de escape
+                    Regex: "([^"\\]|\\.)*"
+  COMENTARIO      → // hasta fin de línea (ignorado por el lexer)
+
+6. PRECEDENCIA DE OPERADORES (de menor a mayor)
+────────────────────────────────────────────────
+  1. ||         (OR lógico)
+  2. &&         (AND lógico)
+  3. == !=      (Igualdad)
+  4. < > <= >=  (Comparación)
+  5. + -        (Suma, resta)
+  6. * /        (Multiplicación, división)
+  7. - !        (Unarios: negación, NOT)
+
+7. EJEMPLO DE PROGRAMA VÁLIDO
+──────────────────────────────
+  entero x = 10;
+  decimal y = 3.14;
+  cadena nombre = "Hola";
+
+  si (x > 5) {
+      imprimir(x);
+  } sino {
+      imprimir(y);
+  }
+
+  mientras (x > 0) {
+      x = x - 1;
+  }
+
+  para (entero i = 0; i < 5; i = i + 1) {
+      imprimir(i);
+  }
+
+  elegir (x) {
+      caso 1:
+          imprimir("uno");
+          romper;
+      defecto:
+          imprimir("otro");
+          romper;
+  }
